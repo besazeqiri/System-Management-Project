@@ -15,11 +15,8 @@
             $password = $antari['fjalekalimi'];
         }
 
-        if (isset($_POST['deleteMember'])) {
-            deleteMember($_POST['antariid']);
-            // Optionally redirect after deletion
-            header("Location: some_page.php");
-            exit();
+        if (isset($_POST['fshijAnetar'])) {
+            fshijAnetar($_POST['antariid']);
         }
         ?>
 
@@ -52,7 +49,7 @@
                 <input type="password" name="password" id="password" class="form-control" value="<?php if(!empty($password)){ echo htmlspecialchars($password); } ?>" disabled>
             </div>
 
-            <input type="submit" name="deleteMember" class=" mb-4 btn btn-danger" value="Delete">
+            <input type="submit" name="fshijAnetar" class=" mb-4 btn btn-danger" value="Delete">
         </form>
     </section>
 </main>
