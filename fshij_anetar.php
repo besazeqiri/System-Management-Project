@@ -49,7 +49,7 @@
                 <input type="password" name="password" id="password" class="form-control" value="<?php if(!empty($password)){ echo htmlspecialchars($password); } ?>" disabled>
             </div>
 
-            <input type="submit" name="fshijAnetar" class=" mb-4 btn btn-danger" value="Delete">
+            <input type="submit" name="fshijAnetar" class=" mb-3 btn btn-danger" value="Delete">
         </form>
     </section>
 </main>
