@@ -10,18 +10,29 @@ function dbconn(){
     }
 }
 
-function Login($email,$password){
+function Login($email, $password) {
     global $dbconn;
-    $sql="SELECT antariid,emri, mbiemri, telefoni, email,fjalekalimi,roli FROM antaret WHERE ";
-    $sql.=" email='$email' AND fjalekalimi='$password'";
-    $res=mysqli_query($dbconn,$sql);
-    $userdata=mysqli_fetch_assoc($res);
-    $anetari=array();
-    $anetari['antariid']=$userdata['antariid'];
-    $anetari['emrimbiemri']=$userdata['emri'] . " " . $userdata['mbiemri'];
-    $anetari['roli']=$userdata['roli'];
-    $_SESSION['anetari']=$anetari;
-    header("location: punet.php");
+
+    $sql = "SELECT antariid, emri, mbiemri, fjalekalimi, roli FROM antaret WHERE email='$email'";
+    $res = mysqli_query($dbconn, $sql);
+
+    if ($res && mysqli_num_rows($res) > 0) {
+        $userdata = mysqli_fetch_assoc($res);
+        
+        if ($password === $userdata['fjalekalimi']) { 
+            $_SESSION['anetari'] = array(
+                'antariid' => $userdata['antariid'],
+                'emrimbiemri' => $userdata['emri'] . " " . $userdata['mbiemri'],
+                'roli' => $userdata['roli']
+            );
+            header("Location: punet.php");
+            exit();
+        } else {
+            echo "Gabim: Fjalëkalimi i gabuar!";
+        }
+    } else {
+        echo "Gabim: Përdoruesi nuk ekziston!";
+    }
 }
 
 
@@ -126,7 +137,6 @@ function fshijProjekt($projektiid){
     }
 }
 
-
 /** Funksionet per Punet */
 function merrPunet(){
     global $dbconn;
@@ -171,16 +181,15 @@ function modifikoPune($punaid,$antariid, $projektiid, $data , $pershkrimi){
     }
 }
 
-function fshijPune($punaid){
+function fshijPune($punaid) {
     global $dbconn;
-    $sql="DELETE FROM punet WHERE punaid=$punaid";
-    $result=mysqli_query($dbconn,$sql);
-    if($result){
-        $_SESSION['message']="The task was successfully deleted";
+    $sql = "DELETE FROM punet WHERE punaid='$punaid'"; 
+    $result = mysqli_query($dbconn, $sql);
+    if ($result) {
+        $_SESSION['message'] = "The task was successfully deleted";
         header("location: punet.php");
-    }else{
-        die ("The task failed to be deleted. " . mysqli_error($dbconn));
+    } else {
+        die("The task failed to be deleted. " . mysqli_error($dbconn));
     }
 }
-
 ?>

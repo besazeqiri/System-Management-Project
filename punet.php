@@ -55,4 +55,3 @@
         </div>
     </section>
 </main>
-<?php include "inc/footer.php";?>

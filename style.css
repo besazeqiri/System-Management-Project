@@ -1,33 +1,45 @@
+html, body {
+    height: 100%; 
+    margin: 0; 
+}
+
+body {
+    display: flex;
+    flex-direction: column; 
+} 
+.container {
+    flex: 1; 
+}
 /* Stilizimi i Headerit */
 header {
-    background: linear-gradient(135deg, #007bff, #0056b3); /* Gradient i dyngjyrshëm */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Hije për një efekt të lehtë të thellësisë */
+    background: linear-gradient(135deg, #007bff, #0056b3); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
 }
 
 header h1 {
-    font-size: 2.5rem; /* Madhësia e fontit për titullin */
-    margin-bottom: 0; /* Hiq hapësirën e poshtme nga titulli */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Efekti i hijes për të bërë tekstin më të dukshëm */
+    font-size: 2.5rem; 
+    margin-bottom: 0; 
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); 
 }
 
 nav ul {
-    padding-left: 0; /* Hiq hapësirën e brendshme në majë të listës */
-    list-style: none; /* Hiq bullet points */
+    padding-left: 0; 
+    list-style: none; 
 }
 
 nav .nav-link {
-    color: #f8f9fa; /* Ngjyra e lidhjeve */
-    font-weight: 500; /* Pesha e fontit për lidhjet */
-    margin-right: 15px; /* Hapësira mes lidhjeve */
+    color: #f8f9fa; 
+    font-weight: 500; 
+    margin-right: 15px; 
 }
 
 nav .nav-link:hover {
-    color: #d4d4d4; /* Ngjyra e lidhjeve në hover */
-    text-decoration: underline; /* Nënvizimi i lidhjeve në hover */
+    color: #d4d4d4; 
+    text-decoration: underline; 
 }
 
 .nav-item {
-    margin-right: 10px; /* Hapësira mes elementeve të navigacionit */
+    margin-right: 10px; 
 }
 
 .form-container {
@@ -95,13 +107,13 @@ textarea.form-control {
     padding: 15px;
     border-radius: 5px;
     background-color: #f9f9f9;
-    min-height: 400px; /* Vendos lartësinë minimale */
+    min-height: 400px; 
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .pitem img {
-    max-height: 200px; /* Vendos lartësinë maksimale për imazhin */
-    object-fit: cover; /* Përshtat imazhin brenda hapësirës */
+    max-height: 200px; 
+    object-fit: cover;
     margin-bottom: 15px;
 }
 
@@ -110,6 +122,6 @@ textarea.form-control {
 }
 
 .pitem p {
-    flex-grow: 1; /* Rrit paragrafin për të mbushur hapësirën */
+    flex-grow: 1; 
     margin-bottom: 15px;
 }

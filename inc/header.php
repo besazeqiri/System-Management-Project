@@ -18,19 +18,23 @@
         <h1 class="display-4 font-weight-bold">SMP </h1>
         <nav>
             <ul class="nav">
-                <li class="nav-item"><a class="nav-link text-light" href="index.php">Home</a></li>
+               
                 <?php
                     if (isset($_SESSION['anetari'])) {
                           echo '<li class="nav-item"><a class="nav-link text-light" href="punet.php">Tasks</a></li>';
 
                      if ($_SESSION['anetari']['roli'] == 1) {
                            echo '<li class="nav-item"><a class="nav-link text-light" href="projektet.php">Projects</a></li>';
-                         echo '<li class="nav-item"><a class="nav-link text-light" href="anetaret.php">Members</a></li>';
-    }
+                           echo '<li class="nav-item"><a class="nav-link text-light" href="anetaret.php">Members</a></li>';
+                        }
 
-    echo '<li class="nav-item"><span class="nav-link text-light">' . htmlspecialchars($_SESSION['anetari']['emrimbiemri']) . '</span></li>';
-}
-?>
+                          echo '<li class="nav-item"><span class="nav-link text-light">' . htmlspecialchars($_SESSION['anetari']['emrimbiemri']) . '</span></li>';
+                          echo '<li class="nav-item"><a class="nav-link text-light" href="logout.php">Logout</a></li>';
+                     }
+                    else{
+                         echo '<li class="nav-item"><a class="nav-link text-light" href="index.php">Home</a></li>';
+                    }
+                ?>
 
             </ul>
         </nav>

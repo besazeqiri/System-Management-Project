@@ -2,6 +2,11 @@
 <main class="container page">
     <section id="content">
         <hr />
+         <!-- Message Section -->
+         <div id="message" class="alert alert-info mb-4" role="alert">
+            <?php if(isset($_SESSION['message'])){echo $_SESSION['message'];} ?>
+        </div>
+
 
         <!-- Table for Projects -->
         <div class="table-responsive">
@@ -44,4 +49,3 @@
         </div>
     </section>
 </main>
-<?php include "inc/footer.php";?>

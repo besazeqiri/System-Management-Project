@@ -4,18 +4,31 @@
         <hr />
 
         <?php
-        if (isset($_GET['pid'])) {
-            $pid = $_GET['pid'];
-            $pune = merrPune($pid); 
-            $antariid = $pune['antariid'];
-            $punaid = $pune['punaid'];
-            $projekti = $pune['projektiid'];
-            $datar = $pune['datar'];
-            $pershkrimi = $pune['pershkrimi'];
+        if (isset($_GET['punaid'])) {
+            $punaid = $_GET['punaid'];
+            $pune = merrPune($punaid); 
+            
+            if ($pune && is_array($pune)) {
+                $antariid = $pune['antariid'] ?? ''; 
+                $punaid = $pune['punaid'] ?? '';
+                $projekti = $pune['projektiid'] ?? '';
+                $datar = $pune['datar'] ?? '';
+                $pershkrimi = $pune['pershkrimi'] ?? '';
+            } else {
+                die("Error: Task not found or invalid ID."); 
+            }
+        } else {
+            die("Error: Task ID is missing."); 
         }
-
+   
         if (isset($_POST['fshijPune'])) {
-            fshijPune($_POST['punaid']);
+         
+            $punaid = $_POST['punaid'];
+
+            if (empty($punaid)) {
+                die("Error: Task ID is missing for deletion.");
+            }
+            fshijPune($punaid); 
         }
         ?>
 
@@ -27,10 +40,10 @@
                 <label for="projekti" class="form-label">Project:</label>
                 <select name="projekti" id="projekti" class="form-select">
                     <?php
-                    $projektiList = merrProjektet(); // Adjusted function to fetch all projects
-                    while ($projekti = mysqli_fetch_assoc($projektiList)) {
-                        $projektiid = $projekti['projektiid'];
-                        $emri = $projekti['emri'];
+                    $projektiList = merrProjektet(); // Fetch all projects
+                    while ($projektiData = mysqli_fetch_assoc($projektiList)) {
+                        $projektiid = $projektiData['projektiid'];
+                        $emri = $projektiData['emri'];
                         echo "<option value='{$projektiid}'" . ($projektiid == $projekti ? ' selected' : '') . ">{$emri}</option>";
                     }
                     ?>
@@ -39,7 +52,7 @@
 
             <div class="mb-3">
                 <label for="datar" class="form-label">Registration date:</label>
-                <input type="date" name="datar" id="datar" class="form-control" value="<?php echo htmlspecialchars($datar ?? ''); ?>">
+                <input type="date" name="datar" id="datar" class="form-control" value="<?php echo htmlspecialchars($datar ?? ''); ?>" disabled>
             </div>
 
             <div class="mb-3">
@@ -48,8 +61,6 @@
             </div>
 
             <input type="submit" name="fshijPune" class="mb-4 btn btn-danger" value="Delete">
-            
         </form>
     </section>
 </main>
-<?php include "inc/footer.php"; ?>

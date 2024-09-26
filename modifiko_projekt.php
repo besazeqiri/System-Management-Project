@@ -87,4 +87,4 @@
         });
     </script>
 </main>
-<?php include "inc/footer.php"; ?>
+

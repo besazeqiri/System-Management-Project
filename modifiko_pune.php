@@ -6,7 +6,7 @@
         <?php
         if (isset($_GET['pid'])) {
             $pid = $_GET['pid'];
-            $pune = merrPuna($pid); // Adjusted function name to match your context
+            $pune = merrPuna($pid); 
             $antariid = $pune['antariid'];
             $punaid = $pune['punaid'];
             $projekti = $pune['projektiid'];
@@ -83,4 +83,4 @@
         });
     </script>
 </main>
-<?php include "inc/footer.php"; ?>
+

@@ -1,6 +1,6 @@
 <footer class="bg-dark text-white py-4">
         <div class="container">
-            <p class="mb-0">© 2024 SMP All rights reserved.</p>
+            <p class="mb-0">© 2022 SMP All rights reserved.</p>
         </div>
     </footer>
 
